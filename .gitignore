@@ -1,0 +1,11 @@
+/build/
+/.cache/
+/.venv/
+/dist/
+__pycache__/
+*.pyc
+*.o
+*.pb.cc
+*.pb.h
+*.pb.go
+*.jar

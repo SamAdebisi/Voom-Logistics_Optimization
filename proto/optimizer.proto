@@ -1,0 +1,22 @@
+syntax = "proto3";
+package voom;
+option go_package = "github.com/voom/voom/proto;proto";
+
+message Node { int64 id = 1; }
+message Edge { int64 from = 1; int64 to = 2; double w = 3; }
+message Graph { repeated Node nodes = 1; repeated Edge edges = 2; }
+
+message RouteRequest { Graph graph = 1; int64 src = 2; int64 dst = 3; }
+message RouteReply { repeated int64 path = 1; double cost = 2; }
+
+message VRPRequest { Graph graph = 1; repeated int64 depots = 2; repeated int64 orders = 3; int32 k = 4; }
+message VRPReply { repeated RouteReply routes = 1; double total_cost = 2; }
+
+message ETAWindowRequest { repeated int64 path = 1; }
+message ETAWindowReply { double min_eta = 1; double max_eta = 2; }
+
+service Optimizer {
+  rpc ShortestPath(RouteRequest) returns (RouteReply);
+  rpc SolveVRP(VRPRequest) returns (VRPReply);
+  rpc ComputeETA(ETAWindowRequest) returns (ETAWindowReply);
+}
