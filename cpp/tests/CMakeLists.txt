@@ -1,0 +1,5 @@
+enable_testing()
+find_package(GTest REQUIRED)
+add_executable(test_astar test_astar.cpp)
+target_link_libraries(test_astar PRIVATE GTest::gtest_main voom_route_opt)
+add_test(NAME astar COMMAND test_astar)
