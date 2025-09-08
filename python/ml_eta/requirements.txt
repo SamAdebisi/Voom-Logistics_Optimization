@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+numpy
+pydantic>=2
+scikit-learn
+xgboost
