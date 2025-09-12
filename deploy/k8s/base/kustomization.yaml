@@ -1,0 +1,14 @@
+namespace: voom
+resources:
+  - namespace.yaml
+  - optimizer-deploy.yaml
+  - optimizer-svc.yaml
+  - gateway-deploy.yaml
+  - gateway-svc.yaml
+  - ml-eta-deploy.yaml
+  - ml-eta-svc.yaml
+  - assignment-deploy.yaml
+  - assignment-svc.yaml
+  - hpa-gateway.yaml
+  - hpa-optimizer.yaml
+  - prometheus-scrape.yaml

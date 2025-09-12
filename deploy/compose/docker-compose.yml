@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  optimizer:
+    build: { context: ../.., dockerfile: deploy/docker/cpp.Dockerfile }
+    ports: ["50051:50051"]
+  ml_eta:
+    build: { context: ../.., dockerfile: deploy/docker/python.Dockerfile }
+    ports: ["8000:8000"]
+  gateway:
+    build: { context: ../.., dockerfile: deploy/docker/go.Dockerfile }
+    ports: ["8080:8080"]
+    depends_on: [optimizer]
+  assignment:
+    build: { context: ../.., dockerfile: deploy/docker/scala.Dockerfile }
+    ports: ["8090:8090"]

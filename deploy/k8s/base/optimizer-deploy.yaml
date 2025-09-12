@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: optimizer, namespace: voom }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: optimizer } }
+  template:
+    metadata:
+      labels: { app: optimizer }
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+    spec:
+      containers:
+        - name: optimizer
+          image: voom/optimizer:latest
+          imagePullPolicy: IfNotPresent
+          ports: [ { containerPort: 50051 } ]

@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: optimizer, namespace: voom }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: optimizer }
+  minReplicas: 2
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: gateway, namespace: voom }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: gateway } }
+  template:
+    metadata:
+      labels: { app: gateway }
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8080"
+    spec:
+      containers:
+        - name: gateway
+          image: voom/gateway:latest
+          ports: [ { containerPort: 8080 } ]
+          env:
+            - name: OPTIMIZER_ADDR
+              value: optimizer.voom.svc.cluster.local:50051

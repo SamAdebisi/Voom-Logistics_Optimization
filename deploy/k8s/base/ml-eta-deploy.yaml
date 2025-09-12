@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: ml-eta, namespace: voom }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: ml-eta } }
+  template:
+    metadata: { labels: { app: ml-eta } }
+    spec:
+      containers:
+        - name: ml-eta
+          image: voom/ml-eta:latest
+          ports: [ { containerPort: 8000 } ]

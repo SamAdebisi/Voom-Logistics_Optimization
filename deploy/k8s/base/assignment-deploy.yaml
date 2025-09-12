@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: assignment, namespace: voom }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: assignment } }
+  template:
+    metadata: { labels: { app: assignment } }
+    spec:
+      containers:
+        - name: assignment
+          image: voom/assignment:latest
+          ports: [ { containerPort: 8090 } ]

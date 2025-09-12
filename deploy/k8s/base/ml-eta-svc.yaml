@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata: { name: ml-eta, namespace: voom }
+spec:
+  selector: { app: ml-eta }
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
