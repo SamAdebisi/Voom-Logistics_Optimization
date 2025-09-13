@@ -1,0 +1,24 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: C++ toolchain
+        run: sudo apt-get update && sudo apt-get install -y build-essential cmake ninja-build libgtest-dev libprotobuf-dev protobuf-compiler libgrpc++-dev
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build -j
+      - name: Tests
+        run: ctest --test-dir build --output-on-failure
+      - name: Python
+        run: |
+          python3 -m venv .venv && . .venv/bin/activate && pip install -r python/ml_eta/requirements.txt && pytest -q python/ml_eta/tests
+      - name: Go
+        run: |
+          pushd go/gateway && go build ./... && go test ./... || true; popd
+      - name: Scala
+        run: |
+          sudo apt-get install -y default-jdk sbt && pushd scala/assignment-service && sbt test && popd

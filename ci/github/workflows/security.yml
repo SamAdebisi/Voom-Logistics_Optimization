@@ -1,0 +1,11 @@
+name: security
+on: [push]
+jobs:
+  trivy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@0.22.0
+        with:
+          scan-type: fs
+          ignore-unfixed: true
