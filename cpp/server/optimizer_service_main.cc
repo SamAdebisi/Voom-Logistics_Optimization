@@ -1,7 +1,7 @@
 #include <grpcpp/grpcpp.h>
 #include <iostream>
 #include "optimizer.grpc.pb.h"
-#include "optimizer_service.cc"
+#include "optimizer_service.hpp"
 
 int main(int argc, char** argv){
   std::string addr = argc>1? argv[1] : "0.0.0.0:50051";
