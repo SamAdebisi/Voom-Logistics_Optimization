@@ -1,0 +1,4 @@
+- C++: follow LLVM style. Prefer header-only for hot paths if justified by profiling.
+- Python: type hints, pydantic models.
+- Go: keep handlers small, instrument with Prometheus.
+- Scala: isolate routes and effects, test with ScalaTest.

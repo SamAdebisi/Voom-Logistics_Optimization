@@ -1,0 +1,1 @@
+Use clear names. Guard against unbounded growth. Fail fast on invalid input at service edges.

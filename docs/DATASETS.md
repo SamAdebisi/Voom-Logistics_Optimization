@@ -1,0 +1,1 @@
+Synthetic data lives in scripts/gen_synthetic_data.py. Real datasets are mounted at runtime and excluded from repo.

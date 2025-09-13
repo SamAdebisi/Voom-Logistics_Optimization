@@ -1,0 +1,1 @@
+Services: optimizer (C++ gRPC), gateway (Go HTTP), ml-eta (Python FastAPI), assignment (Scala HTTP). Gateway calls optimizer for shortest path and VRP. ml-eta adjusts ETAs. Assignment replays historical data and strategies. Prometheus scrapes gateway metrics. HPAs scale optimizer and gateway.
