@@ -1,3 +1,8 @@
 package metrics
-import "github.com/prometheus/client_golang/prometheus/promhttp"
-func Handler() *promhttp.Handler { h := promhttp.Handler(); return &h }
+
+import (
+    "net/http"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
+)
+
+func Handler() http.Handler { return promhttp.Handler() }
