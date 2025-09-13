@@ -1,5 +1,8 @@
 FROM debian:stable AS build
-RUN apt-get update && apt-get install -y build-essential cmake ninja-build git pkg-config libprotobuf-dev protobuf-compiler grpc-proto grpc-dev libgrpc++-dev
+RUN apt-get update && apt-get install -y build-essential \
+    cmake ninja-build git pkg-config libprotobuf-dev protobuf-compiler \
+    protobuf-compiler-grpc grpc-proto grpc-dev libgrpc++-dev && \
+    rm -rf /var/lib/apt/lists/* 
 WORKDIR /src
 COPY . .
 RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
