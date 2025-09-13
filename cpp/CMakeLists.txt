@@ -15,10 +15,10 @@ target_include_directories(voom_vrp PUBLIC vrp/include common/include route_opt/
 target_link_libraries(voom_vrp PUBLIC voom_route_opt)
 
 add_library(voom_sim sim/src/sim_engine.cpp)
-target_include_directories(voom_sim PUBLIC sim/include common/include)
+  target_include_directories(voom_sim PUBLIC sim/include common/include)
 
-a dd_library(voom_eta eta/src/eta_core.cpp)
-target_include_directories(voom_eta PUBLIC eta/include common/include)
+add_library(voom_eta eta/src/eta_core.cpp)
+  target_include_directories(voom_eta PUBLIC eta/include common/include)
 
 add_library(voom_demand demand/src/balancer.cpp)
 target_include_directories(voom_demand PUBLIC demand/include common/include)
